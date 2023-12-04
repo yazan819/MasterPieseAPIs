@@ -1,0 +1,112 @@
+Users CRUD API Documentation
+Base URL: http://localhost.com/masterPieseAPIs/Admin/
+Endpoints
+
+1. Read Users
+
+Endpoint: usersCrud/ReadUsers.php
+Method: GET
+Description: Retrieve all users from the database.
+Request:
+    No request body required.
+Response:
+    200 OK:
+        json
+        [
+        {
+            "UserID": 1,
+            "Username": "example_user",
+            "Email": "user@example.com",
+            ... // Other user attributes
+        },
+        // Other users
+        ]
+    404 Not Found:
+        json
+        {
+        "message": "No users found"
+        }
+
+
+2. Create User
+
+Endpoint: usersCrud/CreateUsers.php
+Method: POST
+Description: Create a new user.
+Request:
+        json
+        {
+        "username": "new_user",
+        "password": "password123",
+        "email": "newuser@example.com",
+        "rolesID": 1
+        }
+Response:
+    201 Created:
+        json
+        {   
+        "message": "User created successfully"
+        }
+    400 Bad Request:
+        json
+        {
+        "message": "Could not create user"
+        }
+
+3. Update User
+
+Endpoint: usersCrud/UpdateUser.php
+Method: PUT
+Description: Update an existing user.
+
+Request:
+        json
+        {
+        "UserID": 1,
+        }
+Response:
+    200 OK:
+        json
+        {
+        "message": "Update successful"
+        }
+    404 Not Found:
+        json
+        {
+        "message": "No matching records found for the provided UserID"
+        }
+
+4. Delete User
+
+Endpoint: usersCrud/DeleteUsers.php
+Method: DELETE
+Description: Delete a user by UserID.
+Request:
+    json
+    {
+    "userID": 1
+    }
+
+Response:
+    200 OK:
+        json
+
+        {
+        "message": "User deleted successfully"
+        }
+
+    404 Not Found:
+        json
+
+    {
+    "message": "User not found or could not be deleted"
+    }
+
+
+
+
+Error Handling
+The API returns appropriate HTTP status codes and corresponding error messages in JSON format.
+Notes
+Ensure proper data formats and required fields when making requests.
+Always handle errors based on the provided HTTP status codes.

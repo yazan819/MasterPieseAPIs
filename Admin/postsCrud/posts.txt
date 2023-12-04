@@ -1,0 +1,141 @@
+Posts CRUD API Documentation
+
+Base URL: http://localhost.com/masterPieseAPIs/Admin/
+
+1. Read All Posts
+
+Endpoint: postsCrud/ReadAllPosts.php
+Method: GET
+Description: Retrieve all posts from the database.
+Request:
+No request body required.
+    Response:
+    200 OK:
+        json
+        [
+        {
+            "PostID": 1,
+            "UserID": 1,
+            "YourNeed": "Web Development Help",
+            "YourProvide": "Graphic Design",
+            "Description": "Looking for assistance in front-end development"
+        },
+        // Other posts
+        ]
+    If no posts found:
+        json
+        {
+        "message": "No posts found"
+        }
+
+2. Create Post
+
+Endpoint: postsCrud/CreatePost.php
+Method: POST
+Description: Create a new post.
+    Request:
+        json
+        {
+        "UserID": 1,
+        "YourNeed": "Web Development Help",
+        "YourProvide": "Graphic Design",
+        "Description": "Looking for assistance in front-end development"
+        }
+  Response:
+    200 OK:
+        json
+        {
+        "message": "Post created successfully"
+        }
+
+If incomplete data provided:
+
+json
+{
+  "message": "Incomplete data provided"
+}
+
+3. Read Post
+
+Endpoint: postsCrud/ReadPost.php
+Method: POST
+Description: Retrieve a specific post by PostID.
+    Request:
+        json
+        {
+        "PostID": 1
+        }
+    Response:
+    200 OK:
+        json
+        {
+        "PostID": 1,
+        "UserID": 1,
+        "YourNeed": "Web Development Help",
+        "YourProvide": "Graphic Design",
+        "Description": "Looking for assistance in front-end development"
+        }
+
+If post not found:
+
+json
+{
+  "message": "Post not found"
+}
+
+4. Update Post
+
+Endpoint: postsCrud/UpdatePost.php
+Method: PUT
+Description: Update an existing post by PostID.
+
+Request:
+
+json
+{
+  "PostID": 1,
+  "YourNeed": "Updated Need Description",
+  "YourProvide": "Updated Provide Description",
+  "Description": "Updated post description"
+}
+Response:
+200 OK:
+json
+Copy code
+{
+  "message": "Post updated successfully"
+}
+If no matching records found:
+json
+Copy code
+{
+  "message": "No matching records found for the provided PostID"
+}
+5. Delete Post
+Endpoint: postsCrud/DeletePost.php
+Method: DELETE
+Description: Delete a post by PostID.
+Request:
+json
+Copy code
+{
+  "PostID": 1
+}
+Response:
+200 OK:
+json
+Copy code
+{
+  "message": "Post deleted successfully"
+}
+If PostID not provided:
+json
+Copy code
+{
+  "message": "PostID not provided"
+}
+Error Handling
+The API returns appropriate HTTP status codes and corresponding error messages in JSON format.
+Notes
+Ensure proper data formats and required fields when making requests.
+Always handle errors based on the provided HTTP status codes.

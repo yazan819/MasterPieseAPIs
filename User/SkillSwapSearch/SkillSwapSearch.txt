@@ -1,0 +1,26 @@
+localhost\masterPieseAPIs\User\SkillSwapSearch\SkillSwapSearch.php
+
+
+you will send this JSON from the client-side 
+{
+    "I_knew": "Graphic Design Services",
+    "I_need": ""
+}
+
+
+
+ شو تخصصي :
+
+هاي ثابثه من البروفايل 
+ I_knew 
+ التخصص اللي سجله اليوزر بالبروفايل  
+
+
+انا بدور على مين :
+
+والبحث راح يكون بناء على 
+I_need :
+وهي الخدمات اللي بقدمها اليوزرز الثانيين اللي ببحث عنه 
+
+
+

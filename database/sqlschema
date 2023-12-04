@@ -1,0 +1,65 @@
+Table Roles {
+Name varcahar(20)
+RolesID int [primary key]
+}
+Table ReviewsRatings {
+ReviewID int [primary key]
+ReviewerID int
+TargetUserID int
+
+Rating int
+ReviewText text
+ReviewDate timestamp 
+}
+Table Users {
+UserID int [primary key]
+RolesID int 
+Username varchar(50) [unique]
+PasswordHash varchar(100)
+Email varchar(100) [unique]
+ProfilePictureURL varchar(255)
+Location varchar(100)
+Bio text
+RegistrationDate timestamp
+}
+Table Messages {
+MessageID int [primary key]
+SenderID int
+ReceiverID int
+MessageText text
+Timestamp timestamp 
+AttachmentURL varchar(255)
+}
+Table SkillSwapRequests {
+RequestID int [primary key]
+SenderID int
+ReceiverID int
+SkillID int
+RequestStatus enum('Pending', 'Accepted', 'Rejected') [default: 'Pending']
+}
+Table Skills {
+SkillID int [primary key]
+UserID int
+SkillName varchar(50)
+SkillCategory varchar(50)
+Description text
+}
+Table Posts {
+PostID int [primary key]
+UserID int
+YourNeed varchar(50)
+yourProvide varchar(50)
+Description text
+}
+Ref: "Users"."UserID" < "Messages"."SenderID" 
+Ref: "Users"."UserID" < "Messages"."ReceiverID" 
+Ref: "Users"."UserID" < "ReviewsRatings"."ReviewerID" 
+Ref: "Users"."UserID" < "ReviewsRatings"."TargetUserID"
+Ref: "Users"."UserID" < "SkillSwapRequests"."SenderID" 
+Ref: "Users"."UserID" < "SkillSwapRequests"."ReceiverID" 
+Ref: "Skills"."SkillID" < "SkillSwapRequests"."SkillID" 
+Ref: "Users"."UserID" < "Skills"."UserID" 
+Ref: "Roles"."RolesID" < "Users"."RolesID"
+Ref: "Users"."UserID" < "Posts"."UserID"
+
+
