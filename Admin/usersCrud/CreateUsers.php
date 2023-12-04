@@ -3,8 +3,13 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
-// Include the file with database connection details
+
 include '../include/connect.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,24 +17,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
 
     // Extract data from JSON
-    $username = $data['username'];
-    $password = $data['password'];
-    $email = $data['email'];
-    $rolesID = $data['rolesID']; // Assuming this is received in JSON
+    $rolesID = $data['RolesID'];
+    $username = $data['Username'];
+    $passwordHash = $data['PasswordHash'];
+    $email = $data['Email'];
+    $profilePictureURL = isset($data['ProfilePictureURL']) ? $data['ProfilePictureURL'] : null;
+    $location = isset($data['Location']) ? $data['Location'] : null;
+    $bio = isset($data['Bio']) ? $data['Bio'] : null;
 
     try {
         // Your SQL query to insert a new user
-        $query = "INSERT INTO Users (Username, PasswordHash, Email, RolesID) 
-                  VALUES (:username, :password, :email, :rolesID)";
+        $query = "INSERT INTO users (RolesID, Username, PasswordHash, Email, ProfilePictureURL, Location, Bio) 
+                  VALUES (:rolesID, :username, :passwordHash, :email, :profilePictureURL, :location, :bio)";
 
         // Prepare the SQL statement
         $stmt = $pdo->prepare($query);
 
         // Bind parameters
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':rolesID', $rolesID);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':passwordHash', $passwordHash);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':profilePictureURL', $profilePictureURL);
+        $stmt->bindParam(':location', $location);
+        $stmt->bindParam(':bio', $bio);
 
         // Execute the query
         $stmt->execute();
