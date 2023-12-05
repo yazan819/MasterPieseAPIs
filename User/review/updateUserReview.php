@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "PUT") {
 
         // Check if the data is not empty and if required fields are provided
         if (!empty($data['ReviewID'])) {
-            $valid_columns = ['ReviewerID', 'TargetUserID', 'Rating', 'ReviewText', ];
+            $valid_columns = ['ReviewerID', 'Rating', 'ReviewText'];
 
             $query = "UPDATE reviewsratings SET ";
             $params = [];
