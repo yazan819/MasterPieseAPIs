@@ -32,4 +32,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo json_encode(['message' => 'Incorrect request method']);
 }
-?>
