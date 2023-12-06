@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./login.css">
+    
+
+    <title> Login </title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-shopping-basket"></i> NATURE</a>
+
+        <nav class="navbar">
+            <a href="/home/index.html">Home</a>
+            <a href="/login_sigup/signup.html">Sign up</a>
+        </nav>
+
+
+    </header>
+    <div class="container">
+
+        <section class="card-container">
+
+            <h1>Login</h1>
+            <!-- Email: -->
+            <form id="loginForm">
+                <div autocomplete="off" onkeyup="return validationEmail()">
+                    <div class="form" id="email_field">
+                        <input type="email" placeholder="ُEmail Address" id="email">
+                        <div class="Errors"><span id="email_error"></span></div>
+                    </div>
+                </div>
+
+                <!-- password: -->
+                <div onkeyup="return validationPass()">
+                    <div class="form">
+                        <div class="create_pass">
+                            <input type="password" placeholder="Password" class="create_password" id="password">
+                            <i class="fa-regular fa-eye-slash" class="show-password" id="show_password"></i>
+                            <div class="Errors"><small id="error_pass"></small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+
+                <div class="bottom">
+                    <button type="submit" id="Login"> Login </button>
+                    <a href="signup.html">
+                        To <span> create an account </span>
+                    </a>
+                </div>
+            </form>
+
+        </section>
+    </div>
+
+    <script src="./login.js"></script>
+
+</body>
+
+</html>

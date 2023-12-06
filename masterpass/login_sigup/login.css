@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --orange: #ee3301;
+    --black: #130f40;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Tilt Neon', sans-serif;
+}
+
+body {
+    width: 100vw;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 9%;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+}
+
+.header .logo {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: var(--black);
+
+}
+
+.header .logo i {
+    color: var(--orange);
+}
+
+.header .navbar a {
+    font-size: 1rem;
+    margin: 0 1rem;
+    color: var(--black);
+}
+
+.header .navbar a:hover {
+    color: var(--orange);
+}
+
+.header .icons div {
+    height: 1.5rem;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    border-radius: .5rem;
+    background: #eee;
+    color: var(--black);
+    font-size: 1rem;
+    margin-right: .3rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.header .icons div:hover {
+    background: var(--orange);
+    color: #fff;
+}
+
+
+/* .container */
+.container {
+    background-image: url(/login_sigup/flat-lay-healthy-vegetables-frame.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+
+/* Card: */
+.card-container {
+    width: 500px;
+    max-width: 90%;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+}
+
+.card-container h1 {
+    color: rgb(0, 0, 0);
+    padding-bottom: 25px;
+    font-size: xx-large;
+}
+
+.form {
+    padding-bottom: 15px;
+    width: 95%;
+}
+
+.card-container input {
+    padding: 15px;
+    width: 100%;
+    border: none;
+    font-size: medium;
+    border: 1px solid black;
+}
+
+/* Errors msgs: */
+.Errors {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+#error_pass,
+#email_error {
+    font-size: 14px;
+    color: #ee3301;
+}
+
+/* show and hide: */
+#show_password {
+    position: absolute;
+    right: 13px;
+    top: 30px;
+    color: rgb(41, 38, 38);
+    transform: translateY(-70%);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 3px;
+}
+
+.create_pass {
+    width: 100%;
+    position: relative;
+}
+
+/* Bottom */
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Login {
+    margin-top: 5px;
+    padding: 0.8em 1.3em;
+    font-size: 16px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: #e9b100;
+    font-weight: bold;
+
+}
+
+#Login:hover {
+    background: var(--orange);
+    color: #fff;
+}
+
+.bottom>a {
+    color: black;
+    font-size: 15px;
+    text-decoration: underline;
+    padding-top: 10px;
+}
+
+.bottom span {
+    color: #ee3301;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title> Regestration </title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-shopping-basket"></i> NATURE</a>
+
+        <nav class="navbar">
+            <a href="/home/index.html">Home</a>
+            <a href="/login_sigup/login.html">login</a>
+        </nav>
+
+
+    </header>
+    <div class="container">
+
+        <!-- Sign Up -->
+        <section class="card-container">
+            <h1> Create an Account </h1>
+            <form>
+                <!-- User Name -->
+                <div autocomplete="off" onkeyup="return validationName()">
+                    <div class="form">
+                        <input type="text" placeholder="User Name" id="username">
+                        <div class="Errors"><span id="name_error"> </span></div>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div autocomplete="off" onkeyup="return validationEmail()">
+                    <div class="form" id="email_field">
+                        <input type="email" placeholder="ُEnter your Email Address" id="email">
+                        <div class="Errors"><span id="email_error"></span></div>
+                    </div>
+                </div>
+                <!-- Create Password -->
+                <div onkeyup="return validationCreate()">
+                    <div class="form">
+                        <div class="create_pass">
+                            <input type="password" placeholder="Enter Password" class="create_password" id="password">
+                            <i class="fa-regular fa-eye-slash" class="show-password" id="show_password"></i>
+                            <div class="Errors"><small id="create_error"></small></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Confirm Password -->
+                <div onkeyup="return checkPassword()">
+                    <div class="form">
+                        <div class="confirm_pass">
+                            <input type="password" placeholder="Confirm Password" class="create_password"
+                                id="confirm-password">
+                            <i class="fa-regular fa-eye-slash" class="show-password" id="confirm_password"></i>
+                            <div class="Errors"><small id="confirm_error"> </small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sign Up -->
+                <div class="bottom">
+                    <button type="submit" id="button"> Sign Up </button>
+                    <a href="/login.html"> Already have an account ? <span> Login </span> </a>
+                </div>
+            </form>
+        </section>
+
+    </div>
+    <script src="./singup.js"></script>
+</body>
+
+</html>
