@@ -6,7 +6,7 @@ include '../include/connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-        $query = "SELECT * FROM posts;";
+        $query = "SELECT posts.* , users.Username ,users.ProfilePictureURL AS profile_picture FROM posts JOIN users on users.UserID = posts.UserID;";
         $stmt = $pdo->query($query);
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -1,0 +1,61 @@
+
+1. Read Messages
+    
+    Endpoint: POST \User\masseging\ReadMessage.php
+    Description: Retrieve conversation history between two users.
+    Request Body:
+    
+        {
+          "SenderID": "string",
+          "ReceiverID": "string"
+        }
+    
+    Response:
+    
+    Array of message objects sorted by timestamp in descending order.
+    
+2. Send Message
+
+    Endpoint: POST \User\masseging\SendMessage.php
+    Description: Send a message between two users.
+
+    Request Body:
+        json
+        Copy code
+        {
+          "SenderID": "string",
+          "ReceiverID": "string",
+          "MessageText": "string"
+        }
+    Response:
+
+    200 OK - Message sent successfully
+
+    500 Internal Server Error - Error sending message
+
+3. Update Message
+
+        Endpoint: PUT \User\masseging\UpdateMessage.php
+        Description: Update a specific message by MessageID.
+    Request Body:
+
+    json
+
+        {
+          "MessageID": "string",
+          "NewMessageText": "string"
+        }
+    Response:
+
+        200 OK - Message updated successfully
+        500 Internal Server Error - Error updating message
+    Error Handling
+
+        Error responses are returned as JSON objects with appropriate HTTP status codes.
+        Common error responses include 500 Internal Server Error for server-related issues.
+
+    Usage Notes
+
+    Ensure to handle responses and errors accordingly in your frontend application.
+    SenderID and ReceiverID should correspond to valid user IDs in the system.
+    MessageText field should contain the content of the message to be sent or updated.

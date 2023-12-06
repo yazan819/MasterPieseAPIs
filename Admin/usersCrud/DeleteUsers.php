@@ -6,6 +6,12 @@ header("Content-Type: application/json");
 // Include the file with database connection details
 include '../include/connect.php';
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 // Check if the request method is DELETE
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Assuming you receive JSON data from the client-side
