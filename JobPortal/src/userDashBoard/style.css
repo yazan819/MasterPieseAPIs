@@ -391,7 +391,9 @@ body {
     }
 
     .main {
+        width: calc(100% - 20% - 20%);
         margin-left: 0;
+    
     }
 
     .detail {
