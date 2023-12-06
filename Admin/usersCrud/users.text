@@ -1,112 +1,90 @@
-Users CRUD API Documentation
-Base URL: http://localhost.com/masterPieseAPIs/Admin/
-Endpoints
+Managing Users Endpoints
+1. Create Users
+•	Endpoint: POST usersCrud\CreateUsers.php
+•	Description: Create a new user.
+•	Request Body:
+{
+"RolesID": "string", 
+"Username": "string",
+"PasswordHash": "string",
+"Email": "string",
+"ProfilePictureURL": "string (optional)",
+"Location": "string (optional)",
+"Bio": "string (optional)"
+ } 
 
-1. Read Users
+•	Response:
+    •	201 Created - User created successfully
+    •	400 Bad Request - Could not create user
+    •	500 Internal Server Error - Error creating user
 
-Endpoint: usersCrud/ReadUsers.php
-Method: GET
-Description: Retrieve all users from the database.
-Request:
-    No request body required.
-Response:
-    200 OK:
-        json
-        [
-        {
-            "UserID": 1,
-            "Username": "example_user",
-            "Email": "user@example.com",
-            ... // Other user attributes
-        },
-        // Other users
-        ]
-    404 Not Found:
-        json
-        {
-        "message": "No users found"
-        }
+2. Read All Users
 
+•	Endpoint: GET 
+•	Description: Retrieve all users.
+•	Response:
 
-2. Create User
+•	200 OK with an array of user objects
 
-Endpoint: usersCrud/CreateUsers.php
-Method: POST
-Description: Create a new user.
-Request:
-        json
-        {
-        "username": "new_user",
-        "password": "password123",
-        "email": "newuser@example.com",
-        "rolesID": 1
-        }
-Response:
-    201 Created:
-        json
-        {   
-        "message": "User created successfully"
-        }
-    400 Bad Request:
-        json
-        {
-        "message": "Could not create user"
-        }
+•	404 Not Found - No users found
 
-3. Update User
+•	500 Internal Server Error - Error fetching users
 
-Endpoint: usersCrud/UpdateUser.php
-Method: PUT
-Description: Update an existing user.
+3. Read Specific User
+•	Endpoint: POST usersCrud\ReadSpacificUser.php
+•	Description: Retrieve a specific user by UserID.
+•	Request Body:
 
-Request:
-        json
-        {
-        "UserID": 1,
-        }
-Response:
-    200 OK:
-        json
-        {
-        "message": "Update successful"
-        }
-    404 Not Found:
-        json
-        {
-        "message": "No matching records found for the provided UserID"
-        }
+{
+     "UserID": "string" 
+} 
+•	Response:
+	    User object 
+        or
+        {'error': 'User not found'}
 
-4. Delete User
+4. Update User
 
-Endpoint: usersCrud/DeleteUsers.php
-Method: DELETE
-Description: Delete a user by UserID.
-Request:
-    json
+•	Endpoint: PUT usersCrud\UpdateUser.php
+•	Description: Update user information.
+•	Request Body:
+{
+    "UserID": "string",
+    "RolesID": "string (optional)",
+    "Username": "string (optional)",
+    "PasswordHash": "string (optional)", 
+    "Email": "string (optional)",
+    "ProfilePictureURL" "string (optional)",
+    "Location": "string (optional)",
+    "Bio": "string (optional)",
+    "RegistrationDate": "string (optional)" } 
+
+•	Response:
+
+    •	200 OK - Update successful
+
+    •	404 Not Found - No matching records found for the provided UserID
+
+    •	500 Internal Server Error - Error updating user
+
+5. Delete User
+•	Endpoint: DELETE usersCrud\DeleteUsers.php
+•	Description: Delete a user by UserID.
+
+•	Request Body:
     {
-    "userID": 1
-    }
+         "userID": "string" 
+    } 
+•	Response:
 
-Response:
-    200 OK:
-        json
+•	200 OK - User deleted successfully
 
-        {
-        "message": "User deleted successfully"
-        }
+•	404 Not Found - User not found or could not be deleted
 
-    404 Not Found:
-        json
-
-    {
-    "message": "User not found or could not be deleted"
-    }
-
-
+•	500 Internal Server Error - Error deleting user
 
 
 Error Handling
-The API returns appropriate HTTP status codes and corresponding error messages in JSON format.
-Notes
-Ensure proper data formats and required fields when making requests.
-Always handle errors based on the provided HTTP status codes.
+•	For most endpoints, errors are returned as JSON objects with appropriate HTTP status codes.
+•	Common error responses include 400 Bad Request, 404 Not Found, and 500 Internal Server Error.
+
