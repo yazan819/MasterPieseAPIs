@@ -5,6 +5,13 @@ header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 include '../include/connect.php';
 
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     try {
         $json_data = file_get_contents('php://input');

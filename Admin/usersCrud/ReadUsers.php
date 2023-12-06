@@ -6,6 +6,12 @@ header("Content-Type: application/json");
 // Include the file with database connection details
 include '../include/connect.php';
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 // Check if the request method is GET
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
