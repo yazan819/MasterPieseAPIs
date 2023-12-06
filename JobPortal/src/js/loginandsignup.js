@@ -64,7 +64,7 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
           sessionStorage.setItem("userid",data.USER_ID);
           console.log('User ID:', data.USER_ID); // s
           sessionStorage.setItem("isLoggedin","true");
-          window.location.href="./userside/Blog Source Code/blog-html-css/admin/users/index.html";
+          window.location.href="../index.html";
           console.log('Validation is false');
         }else {
             alert("the email or password not valid")
