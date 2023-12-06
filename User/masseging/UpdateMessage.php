@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "PUT") {
         echo json_encode(['error' => 'Error updating message: ' . $e->getMessage()]);
     }
 } else {
-    // If the request method is not PUT, return an error message
     echo json_encode(['message' => 'Incorrect request method']);
 }
 ?>
