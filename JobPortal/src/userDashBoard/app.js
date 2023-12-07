@@ -17,7 +17,7 @@ $(".logo").on("click", function(){
 
 
 
-fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/User/postsCrud/ReadAllPosts.php')
+fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php')
     .then(response => response.json())
     .then(posts => {
         // Assuming 'posts' is an array of objects received from your API
@@ -54,7 +54,7 @@ fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/User/postsCrud/Rea
 
 
     function displayPostDetails(postId) {
-        fetch(`http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/User/postsCrud/ReadPost.php`, {
+        fetch(`http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadPost.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

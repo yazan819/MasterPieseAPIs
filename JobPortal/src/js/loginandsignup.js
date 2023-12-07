@@ -39,7 +39,7 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
     //http://localhost/API/server/login_oop.php Send the username and password to the server for authentication
     var user = { email: email, password: password };
 
-    fetch("http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/User/loginAndRegister/login.php", {
+    fetch("http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/loginAndRegister/login.php", {
         method: "POST",
         body: JSON.stringify(user),
         headers: { "Content-Type": "application/json" }

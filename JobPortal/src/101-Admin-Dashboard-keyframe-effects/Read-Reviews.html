@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const reviewsContainer = document.getElementById('reviews-container');
 
     function deleteReview(reviewID) {
-        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/Admin/reviews/DeleteReview.php', {
+        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/DeleteReview.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
