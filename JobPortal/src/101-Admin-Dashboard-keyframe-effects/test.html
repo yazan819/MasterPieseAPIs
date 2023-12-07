@@ -1,0 +1,61 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Add Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Review</h2>
+        <form id="addReviewForm">
+            <label for="reviewerUsername">Reviewer Username:</label>
+            <input type="text" id="reviewerUsername" name="reviewerUsername" required>
+
+            <label for="targetUsername">Target Username:</label>
+            <input type="text" id="targetUsername" name="targetUsername" required>
+
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+            <label for="reviewText">Review Text:</label>
+            <textarea id="reviewText" name="reviewText" required></textarea>
+
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>// add.js
+        $(document).ready(function () {
+            $('#addReviewForm').submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+        
+                const formData = {
+                    reviewerUsername: $('#reviewerUsername').val(),
+                    targetUsername: $('#targetUsername').val(),
+                    rating: $('#rating').val(),
+                    reviewText: $('#reviewText').val(),
+                };
+        
+                // Use fetch API to send data to the server
+                fetch('http://localhost/masterPieseAPIs/masterPieseAPIs/Admin/reviews/AddReview.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message); // Display the server response
+                    // You can redirect to another page or perform additional actions if needed
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+        </script>
+</body>
+</html>

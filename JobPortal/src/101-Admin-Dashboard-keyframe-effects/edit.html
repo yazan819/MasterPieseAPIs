@@ -92,7 +92,7 @@
                         <div class="bg-img" style="background-image: url(img/1.jpeg)"></div>
                         
                         <span class="las la-power-off"></span>
-                        <span>Logout</span>
+                        <span><a href="./index.html">back</a></span>
                     </div>
                 </div>
             </div>
@@ -170,8 +170,7 @@
                     <div class="record-header">
                         <div class="add">
                             <span>Add</span>
-
-                            <button class="addbtn" type="button"><a href="./add.html"><i class="las la-plus-square" style="font-size: 30px;"></i></a></button>
+                            <!-- <button type="button" class="addbtn" id="submit" onclick="postData()">Edit</button> -->
                         </div>
 
                         <!-- <div class="browse">
@@ -182,56 +181,33 @@
                         </div> -->
                     </div>
 
-                    <div>
-                        <table width="100%">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th><span class="las la-sort"></span> email</th>
-                                    <th><span class="las la-sort"></span> username</th>
-                                    <th><span class="las la-sort"></span> role_id</th>
-                                    <th><span class="las la-sort"></span> Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#1</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Andrew Bruno</h4>
-                                                <small>bruno@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        bruno@crossover.org
-                                    </td>
-                                    <td>
-                                        1224
-                                    </td>
-                                    <td>
-                                        Andrew Bruno
-                                    </td>
-                                    <td>
-                                        Adfvdfb1232
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
-                                            <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
-                                        </div>
-                                    </td>
-                                </tr>
 
-
-                                
-                            </tbody>
-                        </table>
+                    <div  class="edit-content">
+                        <h1>Edit User</h1>
+                
+                        <form  id="editUserForm">
+                            <div  class="form-group">
+                                <label for="editRolesID">Roles ID</label>
+                                <input type="text" class="form-control" id="editRolesID" placeholder="Roles ID" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="editUsername">Username</label>
+                                <input type="text" class="form-control" id="editUsername" placeholder="Username" autocomplete="username" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="editPassword">Password</label>
+                                <input type="password" class="form-control" id="editPassword" placeholder="Password" required autocomplete="current-password">
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="editEmail">Email</label>
+                                <input type="email" class="form-control" id="editEmail" placeholder="Email" required>
+                            </div>
+                            <button type="button" id="saveButton">Save Changes</button>
+                        </form>
+                    </div>
                     </div>
 
                 </div>
@@ -241,125 +217,46 @@
         </main>
         
     </div>
-
     <script>
-            // Move the editUser function outside displayUsers
-    function editUser(userID) {
-        // Assuming your edit page is named "edit.html"
-        window.location.href = `./edit.html?userID=${userID}`;
-    }
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the UserID from the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const userID = urlParams.get("userID");
 
+            document.getElementById("saveButton").addEventListener("click", function() {
+                // Replace with the actual user ID you want to update
+                const userDataToUpdate = {
+                    "UserID": userID,
+                    "RolesID": document.getElementById("editRolesID").value,
+                    "Username": document.getElementById("editUsername").value,
+                    "PasswordHash": document.getElementById("editPassword").value,
+                    "Email": document.getElementById("editEmail").value,
+                    // Include other fields you want to update
+                };
 
-
-                document.addEventListener("DOMContentLoaded", function () {
-            // Fetch users when the page is loaded
-            fetchUsers();
-
-            function fetchUsers() {
-                // Make a GET request to the API endpoint
-                fetch("http://localhost/masterPieseAPIs/masterPieseAPIs/Admin/usersCrud/ReadUsers.php")
-                    .then(response => {
-                        // Check if the response status is OK (200)
-                        if (response.ok) {
-                            return response.json(); // Parse the JSON response
-                        } else {
-                            throw new Error("Failed to fetch users");
-                        }
-                    })
-                    .then(users => {
-                        // Call a function to display users on the page
-                        displayUsers(users);
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                    });
-            }
-
-            function displayUsers(users) {
-                // Get the table body where users will be displayed
-                const tbody = document.querySelector("tbody");
-
-                // Clear existing table rows
-                tbody.innerHTML = "";
-
-                // Loop through each user and create a table row
-                users.forEach(user => {
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${user.UserID}</td>
-                        <td>${user.Email}</td>
-                        <td>${user.Username}</td>
-                        <td>${user.RolesID}</td>
-                        <td>
-                            <div class="actions">
-                                
-                                <button class="btn" type="button" onclick="editUser(${user.UserID})"><span class="las la-pen-alt"></span></button>
-                                <button class="btn btn-delete" type="button" onclick="deleteUser(${user.UserID})"><span class="las la-trash-alt"></span></button>
-
-                            </div>
-                        </td>
-                        
-                    `
-                   
-
-                    ;
-
-                    // Append the row to the table body
-                    tbody.appendChild(row);
+                fetch(`http://localhost/MasterPieseAPIsGithub/masterPieseAPIs/Admin/usersCrud/UpdateUser.php?userID=${userID}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userDataToUpdate),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();  // Assuming the server responds with JSON
+                })
+                .then(data => {
+                    console.log("Success:", data);
+                    // You can handle the success response here
+                })
+                .catch(error => {
+                    console.error("Error:", error.message);
+                    // Display or handle the error message here
                 });
-                
-            }
+            });
         });
-
-
-
-
-
-
-//ddddddddddddddddddddddddddddddddddddddddddddd//
-
-// Function to delete a user by userID
-// Function to delete a user by userID
-function deleteUser(userID) {
-    // Define the API endpoint
-    const apiEndpoint = 'http://localhost/masterPieseAPIs/masterPieseAPIs/Admin/usersCrud/DeleteUsers.php';
-
-    // Create the request configuration
-    const requestOptions = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            userID: userID,
-        }),
-    };
-
-    // Make the Fetch API request
-    fetch(apiEndpoint, requestOptions)
-        .then(response => {
-            // Check if the response status is OK (200)
-            if (response.ok) {
-                return response.json(); // Parse the JSON response
-            } else {
-                throw new Error("Failed to delete user");
-            }
-        })
-        .then(data => {
-            // Handle the response data
-            console.log(data.message); // Output the message from the server
-            // You can perform additional actions as needed
-        })
-        .catch(error => {
-            // Handle errors during the fetch request
-            console.error("Error:", error);
-        });
-}
-
-// Example usage: Call the deleteUser function with the desired userID
-const userIDToDelete = 1;
-deleteUser(userIDToDelete);
-
     </script>
 </body>
 </html>

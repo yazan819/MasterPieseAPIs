@@ -186,24 +186,28 @@
                         <h1>Edit User</h1>
                 
                         <form  id="editUserForm">
+                            <div class="form-group">
+                                <label for="reviewId">Review ID:</label>
+                                <input type="text" class="form-control" id="reviewId" name="reviewId" required>
+                            </div>
                             <div  class="form-group">
-                                <label for="editRolesID">Roles ID</label>
-                                <input type="text" class="form-control" id="editRolesID" placeholder="Roles ID" required>
+                                <label for="reviewerUsername">Reviewer Username:</label>
+                                <input type="text" class="form-control" id="reviewerUsername" name="reviewerUsername" required>
                             </div>
                 
                             <div class="form-group">
-                                <label for="editUsername">Username</label>
-                                <input type="text" class="form-control" id="editUsername" placeholder="Username" autocomplete="username" required>
+                                <label for="targetUsername">Target Username:</label>
+                                <input type="text" class="form-control" id="targetUsername" name="targetUsername" required>
                             </div>
                 
                             <div class="form-group">
-                                <label for="editPassword">Password</label>
-                                <input type="password" class="form-control" id="editPassword" placeholder="Password" required autocomplete="current-password">
+                                <label for="rating">Rating:</label>
+                                <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
                             </div>
                 
                             <div class="form-group">
-                                <label for="editEmail">Email</label>
-                                <input type="email" class="form-control" id="editEmail" placeholder="Email" required>
+                                <label for="reviewText">Review Text:</label>
+                                <textarea id="reviewText" class="form-control" name="reviewText" required></textarea>
                             </div>
                             <button type="button" id="saveButton">Save Changes</button>
                         </form>
@@ -218,45 +222,67 @@
         
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get the UserID from the URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const userID = urlParams.get("userID");
+document.addEventListener("DOMContentLoaded", function () {
+    // Add an event listener to the Save Changes button
+    document.getElementById("saveButton").addEventListener("click", function () {
+        // Get the form data
+        const formData = {
+            ReviewID: document.getElementById("reviewId").value,
+            ReviewerID: document.getElementById("reviewerUsername").value,
+            TargetUserID: document.getElementById("targetUsername").value,
+            Rating: document.getElementById("rating").value,
+            ReviewText: document.getElementById("reviewText").value,
+            // Add other form fields as needed
+        };
+        // Send a PUT request using the Fetch API
+        fetch("http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/Admin/reviews/UpdateReview.php", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(async (response) => {
+                if (!response.ok) {
+                    let errorText;
 
-            document.getElementById("saveButton").addEventListener("click", function() {
-                // Replace with the actual user ID you want to update
-                const userDataToUpdate = {
-                    "UserID": userID,
-                    "RolesID": document.getElementById("editRolesID").value,
-                    "Username": document.getElementById("editUsername").value,
-                    "PasswordHash": document.getElementById("editPassword").value,
-                    "Email": document.getElementById("editEmail").value,
-                    // Include other fields you want to update
-                };
+                    try {
+                        const contentType = response.headers.get("content-type");
 
-                fetch(`http://localhost/masterPieseAPIs/masterPieseAPIs/Admin/usersCrud/UpdateUser.php?userID=${userID}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(userDataToUpdate),
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
+                        if (contentType && contentType.includes("application/json")) {
+                            const errorJson = await response.json();
+                            errorText = JSON.stringify(errorJson);
+                        } else {
+                            // If the response is not JSON, treat it as plain text
+                            errorText = await response.text();
+                        }
+                    } catch (jsonError) {
+                        // If parsing as JSON fails, treat it as plain text
+                        errorText = await response.text();
                     }
-                    return response.json();  // Assuming the server responds with JSON
-                })
-                .then(data => {
-                    console.log("Success:", data);
-                    // You can handle the success response here
-                })
-                .catch(error => {
-                    console.error("Error:", error.message);
-                    // Display or handle the error message here
-                });
+
+                    throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+                }
+
+                // If the response is JSON, parse it as such
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.includes("application/json")) {
+                    return response.json();
+                } else {
+                    return response.text();
+                }
+            })
+            .then((data) => {
+                console.log("Data from server:", data); // Log the parsed data
+                // You can handle the response as needed, e.g., show a success message
+            })
+            .catch((error) => {
+                console.error("Error:", error.message);
+                // Handle errors, e.g., show an error message to the user
             });
-        });
+    });
+});
+
     </script>
 </body>
 </html>
