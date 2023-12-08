@@ -1,5 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 include '../include/connect.php';
 
@@ -22,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($data['I_knew']) && !empty($data['I_knew'])) {
                 $userNeed = '%' . $data['I_knew'] . '%';
 
-                $query = "SELECT * FROM posts WHERE YourProvide LIKE ? AND YourNeed LIKE ?;";
+                $query = "SELECT posts.* , users.Username ,users.ProfilePictureURL AS profile_picture FROM posts JOIN users on users.UserID = posts.UserID WHERE posts.YourProvide LIKE ? AND posts.YourNeed LIKE ?;";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute([$userProvide, $userNeed]);
                 $matchingPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
