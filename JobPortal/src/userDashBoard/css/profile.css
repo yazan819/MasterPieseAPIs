@@ -377,7 +377,7 @@ body {
 
 .sidebar.active {
     display: flex;
-    width: 220px;
+    width: 20%;
     z-index: 100;
 }
 
