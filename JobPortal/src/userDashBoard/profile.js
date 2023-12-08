@@ -33,7 +33,6 @@ function fetchUserDataAndPopulateForm(userID) {
         document.getElementById('userLocation').innerText = data.Location;
         document.getElementById('userBio').innerText = data.Bio;
         
-        // Add event listener to the Edit profile button
         document.getElementById('editProfileButton').addEventListener('click', function() {
             window.location.href = `editProfile.html?userid=${userID} `;
         });
@@ -43,7 +42,6 @@ function fetchUserDataAndPopulateForm(userID) {
     });
 }
 
-// Call the function with the stored userID
 document.addEventListener("DOMContentLoaded", function() {
 
     let userID = sessionStorage.getItem("userid");
