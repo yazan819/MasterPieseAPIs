@@ -34,11 +34,8 @@ function fetchUserDataAndPopulateForm(userID) {
         document.getElementById('userBio').innerText = data.Bio;
         
         // Add event listener to the Edit profile button
-        document.querySelector('.btn.btn-primary').addEventListener('click', function() {
-            // Here you can handle the click event and use the userID
-            // For example, redirect to an edit profile page with the userID
-            window.location.href = 'editProfile.html?userid=' + userID;
-            // Or perform any other action you want with the userID
+        document.getElementById('editProfileButton').addEventListener('click', function() {
+            window.location.href = `editProfile.html?userid=${userID} `;
         });
     })
     .catch(error => {
@@ -66,3 +63,4 @@ document.getElementById('ProfileLoction').addEventListener('click', function() {
 
     window.location.href = 'Profile.html';
 });
+
