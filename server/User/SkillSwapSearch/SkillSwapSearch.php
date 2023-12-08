@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->execute([$userProvide, $userNeed]);
                 $matchingPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             } else {
-                $query = "SELECT * FROM posts WHERE YourProvide LIKE ?;";
+                $query = "SELECT posts.* , users.Username ,users.ProfilePictureURL AS profile_picture FROM posts JOIN users on users.UserID = posts.UserID WHERE YourProvide LIKE ?;";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute([$userProvide]);
                 $matchingPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
