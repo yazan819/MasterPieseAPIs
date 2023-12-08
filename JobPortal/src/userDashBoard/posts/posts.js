@@ -47,7 +47,20 @@ document.getElementById('ProfileLoction').addEventListener('click', function() {
       posts.forEach(post => {
         const card = document.createElement('div');
         card.className = 'col-lg-4';
-        card.innerHTML = `
+        
+        // Convert the received date format to "12 DEC"
+        const receivedDate = post.Date; // Assuming post.Date is your date field
+        const dateObj = new Date(receivedDate);
+        const monthNames = [
+          'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+          'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
+        ];
+        const month = monthNames[dateObj.getMonth()];
+        const day = dateObj.getDate();
+        const year = dateObj.getFullYear();
+        const formattedDate = `${day} ${month}`;
+  
+        card.innerHTML =   `
           <div class="card card-margin">
             <div class="card-header no-border">
               <h5 class="card-title">${post.YourNeed}</h5>
@@ -57,8 +70,8 @@ document.getElementById('ProfileLoction').addEventListener('click', function() {
                 <!-- Populate card body with post data -->
                 <div class="widget-49-title-wrapper">
                 <div class="widget-49-date-primary">
-                  <span class="widget-49-date-day">09</span>
-                  <span class="widget-49-date-month">apr</span>
+                  <span class="widget-49-date-day">${day}</span>
+                  <span class="widget-49-date-month">${month.toLowerCase()}</span>
                 </div>
                 <div class="widget-49-meeting-info">
                   <span class="widget-49-pro-title"
