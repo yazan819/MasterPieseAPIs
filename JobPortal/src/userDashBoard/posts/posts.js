@@ -75,10 +75,10 @@ document.getElementById('ProfileLoction').addEventListener('click', function() {
                 </div>
                 <div class="widget-49-meeting-info">
                   <span class="widget-49-pro-title"
-                    >Looking For</span
+                    >I Knew</span
                   >
                   <span class="widget-49-meeting-time"
-                    >data.YourProvide</span
+                    >${post.YourProvide}</span
                   >
                 </div>
               </div>
