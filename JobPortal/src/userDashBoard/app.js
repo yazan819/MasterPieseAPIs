@@ -17,6 +17,11 @@ $(".logo").on("click", function(){
 
 
 
+document.getElementById('ProfileLoction').addEventListener('click', function() {
+
+    window.location.href = 'Profile.html';
+});
+
 
 function fetchAndDisplayPosts() {
     fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php')
