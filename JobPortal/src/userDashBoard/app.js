@@ -14,10 +14,6 @@ $(".logo").on("click", function(){
     $(".sidebar").removeClass("active");
 });
 
-$(".icon-inner").on("click", function(){
-    $(".sidebar").removeClass("active");
-});
-
 
 
 
