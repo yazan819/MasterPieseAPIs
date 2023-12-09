@@ -1,8 +1,3 @@
-document.getElementById('ProfileLoction').addEventListener('click', function() {
-
-    window.location.href = 'Profile.html';
-});
-
 $(".card").on("click", function(){
     $(".detail").addClass("active");
 });
@@ -18,3 +13,5 @@ $(".menu-bar").on("click", function(){
 $(".logo").on("click", function(){
     $(".sidebar").removeClass("active");
 });
+
+

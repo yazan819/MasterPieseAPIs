@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($data['UserID'])) {
             $userID = $data['UserID'];
 
-            $query = "SELECT s.RequestID, s.SenderID, s.ReceiverID, s.SkillID, s.RequestStatus, sender.Username AS SenderUsername
+            $query = "SELECT s.RequestID, s.SenderID, s.ReceiverID, s.SkillID,sender.ProfilePictureURL,sender.mainProffision, s.RequestStatus, sender.Username AS SenderUsername
                       FROM skillswaprequests s
                       INNER JOIN users sender ON s.SenderID = sender.UserID
                       WHERE s.ReceiverID = :userID AND s.RequestStatus = 'Accepted'";
@@ -22,13 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':userID', $userID);
             $stmt->execute();
-
             $pendingRequests = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
             if ($pendingRequests) {
                 echo json_encode($pendingRequests);
             } else {
-                echo json_encode(array("message" => "No pending swap requests found for this user"));
+                echo json_encode(array("message" => "No freinds swap requests found for this user"));
             }
         } else {
             echo json_encode(array("message" => "UserID not provided"));

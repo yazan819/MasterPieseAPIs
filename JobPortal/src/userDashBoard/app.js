@@ -22,14 +22,22 @@ document.getElementById('ProfileLoction').addEventListener('click', function() {
     window.location.href = 'Profile.html';
 });
 
+function fetchAndDisplayPosts(userID) {
+    // Create an object containing the userID
+    const data = { userID };
 
-function fetchAndDisplayPosts() {
-    fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php')
-        .then(response => response.json())
-        .then(posts => {
-            displayPosts(posts); // Display all posts initially
-        })
-        .catch(error => console.error('Error fetching data:', error));
+    fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data) // Convert the data object to JSON
+    })
+    .then(response => response.json())
+    .then(posts => {
+        displayPosts(posts); // Display posts returned from the server
+    })
+    .catch(error => console.error('Error fetching data:', error));
 }
 
 // Function to display posts
@@ -157,7 +165,30 @@ document.getElementById('searchButton').addEventListener('click', function() {
 });
 
 // Fetch and display all posts initially
-fetchAndDisplayPosts();    
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // let userID = sessionStorage.getItem("userid");
+    let userID=2
+    if(!userID)(
+        userID=2
+    )
+    fetchAndDisplayPosts(2);
+});
 
 
 
+//////////////////
+const toggleFriends = document.querySelectorAll('.toggle-friends');
+
+// Loop through each element and add a click event listener
+toggleFriends.forEach((toggle) => {
+  toggle.addEventListener('click', function() {
+    // Find the next element with the 'friends-submenu' class
+    const submenu = this.nextElementSibling;
+
+    // Toggle the 'show' class to collapse or expand the submenu
+    submenu.classList.toggle('show');
+  });
+});

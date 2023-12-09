@@ -176,7 +176,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       // Fetch API to send data
-      const userID = sessionStorage.getItem('userid'); // Get UserID from session
+      let userID = sessionStorage.getItem('userid');
+      if(!userID){
+        userID=2
+      } // Get UserID from session
       
       const postData = {
           UserID: userID,
