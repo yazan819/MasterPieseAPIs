@@ -146,3 +146,60 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const createPostForm = document.getElementById('createPostForm');
+  createPostForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      // Validation
+      const yourNeed = document.getElementById('YourNeed').value.trim();
+      const yourProvide = document.getElementById('YourProvide').value.trim();
+      const description = document.getElementById('Description').value.trim();
+      
+      const yourNeedError = document.getElementById('yourNeedError');
+      const yourProvideError = document.getElementById('yourProvideError');
+      
+      // Reset previous error messages
+      yourNeedError.textContent = '';
+      yourProvideError.textContent = '';
+      
+      // Check if fields are empty
+      if (!yourNeed || !yourProvide || !description) {
+          if (!yourNeed) yourNeedError.textContent = 'Looking For is required';
+          if (!yourProvide) yourProvideError.textContent = 'Skill I Have is required';
+          return;
+      }
+      
+      // Fetch API to send data
+      const userID = sessionStorage.getItem('userid'); // Get UserID from session
+      
+      const postData = {
+          UserID: userID,
+          YourNeed: yourNeed,
+          YourProvide: yourProvide,
+          Description: description
+      };
+      
+      fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/CreatePost.php', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(postData)
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data); // Handle success response
+          // You can perform actions after successful submission, like closing the modal or displaying a success message
+      })
+      .catch(error => {
+          console.error('Error:', error); // Handle error
+          // You can display an error message or take appropriate actions here
+      });
+  });
+});
