@@ -1,133 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/profile.css" />
-    <link rel="stylesheet" href="../css/posts.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@100;300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="/JobPortal/src/css/style.css" rel="stylesheet" />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-    />
 
-    <title>SkillSwap Website</title>
-    <style type="text/css"></style>
-  </head>
-  <style></style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/profile.css" />
+  <link rel="stylesheet" href="../css/posts.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@100;300&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/JobPortal/src/css/style.css" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
-  <body>
-    <div id="mainContaner">
-      <div class="sidebar">
-        <h1 class="logo">SkillSwap</h1>
-        <div class="menus">
-          <a href="/JobPortal/src/index.html"
-            ><ion-icon name="home-outline"></ion-icon> home</a
-          >
-          <a href="posts.html"
-            ><ion-icon name="newspaper-outline"></ion-icon>Posts</a
-          >
-          <a href="../index.html"
-            ><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a
-          >
-          <a href="#"
-            ><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a
-          >
-          <a href="#"
-            ><ion-icon name="mail-unread-outline"></ion-icon> messags</a
-          >
-          <!-- <a href="#"><ion-icon name="settings-outline"></ion-icon> settings</a> -->
-        </div>
-        <div id="ProfileLoction" class="profile">
-          <img
-            id="ProfileImg"
-            class="profile-img"
-            src="/images/download (4).jpeg"
-            alt=""
-          />
-          <div class="profile-name">
-            <h4>albert einstein</h4>
-            <p>Data Science</p>
-          </div>
+  <title>SkillSwap Website</title>
+  <style type="text/css"></style>
+</head>
+<style></style>
+
+<body>
+  <div id="mainContaner">
+    <div class="sidebar">
+      <h1 class="logo">SkillSwap</h1>
+      <div class="menus">
+        <a href="/JobPortal/src/index.html"><ion-icon name="home-outline"></ion-icon> home</a>
+        <a href="posts.html"><ion-icon name="newspaper-outline"></ion-icon>Posts</a>
+        <a href="../index.html"><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a>
+        <a href=""><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a>
+        <a href=""><ion-icon name="mail-unread-outline"></ion-icon> messags</a>
+        <a href="../SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends</a>
+        <a href="../SkillSwapRequests/penddingRequests.html"><ion-icon name="settings-outline"></ion-icon> Friends
+          request</a>
+        <a href="../profile.html"><ion-icon name="settings-outline"></ion-icon> Profile</a>
+        <a href="../editProfile.html"><ion-icon name="settings-outline"></ion-icon>Edit Profile</a>
+      </div>
+      <div id="ProfileLoction" class="profile">
+        <img id="ProfileImg" class="profile-img" src="/images/download (4).jpeg" alt="" />
+        <div class="profile-name">
+          <h4>albert einstein</h4>
+          <p>Data Science</p>
         </div>
       </div>
+    </div>
 
-      <!-------------------------------------------->
-      <!--------------------MAIN-------------------->
-      <!-------------------------------------------->
+    <!-------------------------------------------->
+    <!--------------------MAIN-------------------->
+    <!-------------------------------------------->
 
-      <div id="CardContainer" class="main">
-        <div class="main-header">
-          <ion-icon class="menu-bar" name="menu-outline"
-            ><main>Menu</main></ion-icon
-          >
-        </div>
+    <div id="CardContainer" class="main">
+      <div class="main-header">
+        <ion-icon class="menu-bar" name="menu-outline">
+          <main>Menu</main>
+        </ion-icon>
+      </div>
 
-        <div class="container">
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="postModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="postModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="postModalLabel">Create Post</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form id="createPostForm">
-                    <div class="form-group">
-                        <label for="YourNeed">Looking For</label>
-                        <input type="text" class="form-control" id="YourNeed" name="YourNeed" placeholder="ex: Graphic designer ...">
-                        <span id="yourNeedError" class="text-danger"></span>
-                        <label for="YourProvide">Skill I Have:</label>
-                        <input type="text" class="form-control" id="YourProvide" name="YourProvide" placeholder="ex: Graphic designer ...">
-                        <span id="yourProvideError" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="Description">Description</label>
-                        <textarea class="form-control" id="Description" name="Description"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="postModalLabel">Create Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="createPostForm">
+                  <div class="form-group">
+                    <label for="YourNeed">Looking For</label>
+                    <input type="text" class="form-control" id="YourNeed" name="YourNeed"
+                      placeholder="ex: Graphic designer ...">
+                    <span id="yourNeedError" class="text-danger"></span>
+                    <label for="YourProvide">Skill I Have:</label>
+                    <input type="text" class="form-control" id="YourProvide" name="YourProvide"
+                      placeholder="ex: Graphic designer ...">
+                    <span id="yourProvideError" class="text-danger"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="Description">Description</label>
+                    <textarea class="form-control" id="Description" name="Description"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                
-                </div>
+
               </div>
             </div>
           </div>
+        </div>
 
-          <button
-            id="createPostBtn"
-            class="btn btn-primary mb-5"
-            type="button"
-            data-toggle="modal"
-            data-target="#postModal"
-          >
-            Create Post
-          </button>
+        <button id="createPostBtn" class="btn btn-primary mb-5" type="button" data-toggle="modal"
+          data-target="#postModal">
+          Create Post
+        </button>
 
-          <div class="row" id="postContainer">
-            <!-- //////////////////////// -->
-            <!-- <div class="col-lg-4">
+        <div class="row" id="postContainer">
+          <!-- //////////////////////// -->
+          <!-- <div class="col-lg-4">
                     <div class="card card-margin">
                       <div class="card-header no-border">
                         <h5 class="card-title">MOM</h5>
@@ -167,25 +137,27 @@
                       </div>
                     </div>
                   </div> -->
-            <!-- ////////////// -->
-          </div>
+          <!-- ////////////// -->
         </div>
-        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript"></script>
       </div>
-
-      <!------------------------------------------------------------------>
-      <!--------------------right section: detail jobs-------------------->
-      <!------------------------------------------------------------------>
-
-      <!-- <div class="detail">
-            <ion-icon class="close-detail" name="close-outline"></ion-icon>
-            
-        </div> -->
     </div>
-  </body>
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="posts.js"></script>
+
+    <!------------------------------------------------------------------>
+    <!--------------------right section: detail jobs-------------------->
+    <!------------------------------------------------------------------>
+
+    <!-- <div class="detail">
+        <ion-icon class="close-detail" name="close-outline"></ion-icon>
+        
+      </div> -->
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="posts.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
 </html>

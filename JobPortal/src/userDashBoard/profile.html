@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/profile.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
     <link
-    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@100;300&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@100;300&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    
+
     <title>SkillSwap Website</title>
     <style type="text/css">
         body {
             /* margin-top: 20px; */
             background: #f8f8f8
         }
-        #userName{
+
+        #userName {
             border: 1px solid black;
             padding: 2px;
-            border-radius: 5px ;
+            border-radius: 5px;
         }
-        #userBio{
+
+        #userBio {
             border: 1px solid black;
             padding: 2px;
-            border-radius: 5px ;
+            border-radius: 5px;
         }
-        #userEmail{
+
+        #userEmail {
             border: 1px solid black;
             padding: 2px;
-            border-radius: 5px ;
+            border-radius: 5px;
         }
-        #userLocation{
+
+        #userLocation {
             border: 1px solid black;
             padding: 2px;
-            border-radius: 5px ;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -47,15 +51,22 @@
 
 <body>
     <div id="mainContaner">
-     
+
         <div class="sidebar">
             <h1 class="logo">SkillSwap</h1>
             <div class="menus">
-                <a href="/JobPortal/src/index.html"><ion-icon name="home-outline"></ion-icon> home</a>
-                <a href="./posts/posts.html"><ion-icon name="newspaper-outline"></ion-icon>Posts</a>
-                <a href="index.html"><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a>
-                <a href="#"><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a>
-                <a href="#"><ion-icon name="mail-unread-outline"></ion-icon> messags</a>
+                <div class="menus">
+                    <a href="/JobPortal/src/index.html"><ion-icon name="home-outline"></ion-icon> home</a>
+                    <a href="./posts/posts.html"><ion-icon name="newspaper-outline"></ion-icon>Posts</a>
+                    <a href="index.html"><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a>
+                    <a href=""><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a>
+                    <a href=""><ion-icon name="mail-unread-outline"></ion-icon> messags</a>
+                    <a href="SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends</a>
+                    <a href="./SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends
+                        request</a>
+                    <a href="./profile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
+                    <a href="./editProfile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
+                </div>
             </div>
             <div id="ProfileLoction" class="profile">
                 <img id="ProfileImg" class="profile-img" src="/images/download (4).jpeg" alt="">
@@ -72,113 +83,123 @@
 
         <div id="CardContainer" class="main">
             <div class="main-header">
-                <ion-icon class="menu-bar" name="menu-outline"><Main>Menu</Main></ion-icon>
-    
+                <ion-icon class="menu-bar" name="menu-outline">
+                    <Main>Menu</Main>
+                </ion-icon>
+
             </div>
-            
-                <div class="container">
-                    <div class="row flex-lg-nowrap">
-                    
-                        <div class="col">
-                            <div class="row">
-                                <div class="col-12 mb-3 ">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="e-profile">
-                                                <div class="row">
-                                                    <div class="col-12 col-sm-auto mb-3">
-                                                        <div class="mx-auto" style="width: 140px;">
-                                                            <img id="ProfileImgTwo" src="" class="d-flex justify-content-center align-items-center rounded"
-                                                                style="height: 140px; background-color: rgb(233, 236, 239);">
-                                                               
-                                                            </img>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                                                        <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
-                                                            <!-- <p class="mb-0">@johnny.s</p> -->
-                                                            <!-- <div class="text-muted"><small>Last seen 2 hours ago</small> -->
-                                                            </div>
-                                      
-                                                        </div>
-                                                      
+
+            <div class="container">
+                <div class="row flex-lg-nowrap">
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-12 mb-3 ">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="e-profile">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-auto mb-3">
+                                                    <div class="mx-auto" style="width: 140px;">
+                                                        <img id="ProfileImgTwo" src=""
+                                                            class="d-flex justify-content-center align-items-center rounded"
+                                                            style="height: 140px; background-color: rgb(233, 236, 239);">
+
+                                                        </img>
                                                     </div>
                                                 </div>
-                                                <ul class="nav nav-tabs">
-                                                    <li class="nav-item"><a href class="active nav-link">Profile</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="tab-content pt-3">
-                                                    <div class="tab-pane active">
-                                                        <form class="form" novalidate>
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <div class="row">
-                                                                       
-                                                                        <div class="col">
-                                                                            <div class="form-group">
-                                                                                <label>Username</label>
-                                                                                <p id="userName"> Abod</p>
+                                                <div
+                                                    class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
+                                                        <!-- <p class="mb-0">@johnny.s</p> -->
+                                                        <!-- <div class="text-muted"><small>Last seen 2 hours ago</small> -->
+                                                    </div>
 
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col">
-                                                                            <div class="form-group">
-                                                                                <label>Email</label>
-                                                                                <p id="userEmail"> Email</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <div class="form-group">
-                                                                                <label>Location</label>
-                                                                                <p id="userLocation"> Location</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col mb-3">
-                                                                            <div class="form-group">
-                                                                                <label>Bio</label>
-                                                                                <p  id="userBio" class="form-control" rows="5"
-                                                                                    placeholder="My Bio"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam incidunt, ipsa quae quas in cum sapiente blanditiis dolor alias unde explicabo provident officia enim eligendi eaque illum. Necessitatibus, odit dolor?</p>
-                                                                            </div>
-                                                                        </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href class="active nav-link">Profile</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <form class="form" novalidate>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="row">
+
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Username</label>
+                                                                        <p id="userName"> Abod</p>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                          
-                                                        </form>
-                                                        <div class="row">
-                                                            <div class="col d-flex justify-content-end">
-                                                               <button id="editProfileButton" class="btn btn-primary"> Edit profle
-                                                                </button>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <p id="userEmail"> Email</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Location</label>
+                                                                        <p id="userLocation"> Location</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <div class="form-group">
+                                                                        <label>Bio</label>
+                                                                        <p id="userBio" class="form-control" rows="5"
+                                                                            placeholder="My Bio"> Lorem, ipsum dolor sit
+                                                                            amet consectetur adipisicing elit. Nam
+                                                                            incidunt, ipsa quae quas in cum sapiente
+                                                                            blanditiis dolor alias unde explicabo
+                                                                            provident officia enim eligendi eaque illum.
+                                                                            Necessitatibus, odit dolor?</p>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+
+                                                </form>
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <button id="editProfileButton" class="btn btn-primary"> Edit
+                                                            profle
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                              
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
-
+            </div>
         </div>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
-        <!------------------------------------------------------------------>
-        <!--------------------right section: detail jobs-------------------->
-        <!------------------------------------------------------------------>
+    </div>
 
-        <!-- <div class="detail">
+    <!------------------------------------------------------------------>
+    <!--------------------right section: detail jobs-------------------->
+    <!------------------------------------------------------------------>
+
+    <!-- <div class="detail">
         <ion-icon class="close-detail" name="close-outline"></ion-icon>
      
     </div> -->
@@ -188,5 +209,6 @@
     </div>
 </body>
 <script src="profile.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 </html>
