@@ -117,8 +117,8 @@ function displayPostDetails(postId) {
             <hr class="divider">
             <div class="detail-btn">
                 <button class="but-apply">Apply Now</button>
-                <button class="but-save">Save job</button>
-            </div>
+                <button onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
+                </div>
         `;
 
         // Show the detail view
@@ -169,8 +169,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    // let userID = sessionStorage.getItem("userid");
-    let userID=2
+    let userID = sessionStorage.getItem("userid");
     if(!userID)(
         userID=2
     )
@@ -192,3 +191,54 @@ toggleFriends.forEach((toggle) => {
     submenu.classList.toggle('show');
   });
 });
+
+document.addEventListener('DOMContentLoaded', function(){
+    const drop = document.getElementById('drop');
+    const droplist = document.getElementById('drop-list');
+
+    drop.addEventListener('click', function (){
+        droplist.classList.toggle('show');
+    });
+});
+
+
+
+// send friend request :::
+
+
+function sendRequest(receiverID) {
+    // const senderID = sessionStorage.getItem('userid'); // Get senderID from session
+    const senderID =2 // Get senderID from session
+    const skillID = 1; // Assuming skillID is always 1 based on your description
+
+    const requestData = {
+        senderID: senderID,
+        receiverID: receiverID,
+        skillID: skillID
+    };
+
+    fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/SendingSkillSwapRequests.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // If the request was successful, show an alert
+            return response.json();
+        } else {
+            throw new Error('Request failed');
+        }
+    })
+    .then(data => {
+        // Show an alert indicating the success message from the server
+        alert(data.message);
+    })
+    .catch(error => {
+        // Handle any errors that occurred during the fetch
+        console.error('Error sending request:', error);
+        // Optionally, you can show an error alert or handle the error in another way
+    });
+}

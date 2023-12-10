@@ -16,16 +16,41 @@
         <h1 class="logo">SkillSwap</h1>
         <div class="menus">
             <div class="menus">
-                <a href="/JobPortal/src/index.html"><ion-icon name="home-outline"></ion-icon> home</a>
-                <a href="./posts/posts.html"><ion-icon name="newspaper-outline"></ion-icon>Posts</a>
-                <a href="index.html"><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a>
-                <a href=""><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a>
-                <a href=""><ion-icon name="mail-unread-outline"></ion-icon> messags</a>
-                <a href="SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends</a>
-                <a href="./SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends
-                    request</a>
-                <a href="./profile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
-                <a href="./editProfile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
+                <ul>
+                    <li>
+                        <a href="/JobPortal/src/index.html"><ion-icon name="home-outline"></ion-icon> home</a></li>
+                    <li>
+                      <a href="./posts/posts.html"><ion-icon name="newspaper-outline"></ion-icon>Posts</a>
+                    </li>
+                    <li>
+                      <a href="index.html"><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a>
+                    </li>
+                    <li>
+                      <a href=""><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a>
+                    </li>
+                    <li>
+                       <a href=""><ion-icon name="mail-unread-outline"></ion-icon> messags</a>
+                    </li>
+                    <li>
+                       <a href="SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends
+                    </li>
+                    <li id="drop">
+                        <a><ion-icon name="settings-outline"></ion-icon> Friends request</a>
+                        <ul id="drop-list" class="drop-list">
+                            <li>one</li>
+                            <li>two</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./profile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
+                    </li>
+                    <li>
+                        <a href="./editProfile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
+                    </li>
+                </ul>
+             
+                </a>
+                   
             </div>
         </div>
         <div id="ProfileLoction" class="profile">
@@ -114,7 +139,7 @@
             <hr class="divider">
             <div class="detail-btn">
                 <button class="but-apply">Apply Now</button>
-                <button class="but-save">Save job</button>
+                <button class="but-save">Add Friend</button>
             </div>
         </div>
 
