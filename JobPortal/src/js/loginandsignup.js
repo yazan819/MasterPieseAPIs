@@ -54,18 +54,15 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
       .then((data) => {
         // Check if the validation is true or false
         if (data.STATUS === true && data.ROLE == 2) {
-          console.log('Validation is true');
-          console.log('Role:', data.ROLE);
           sessionStorage.setItem("userid",data.USER_ID);
-          console.log('User ID:', data.USER_ID); // s
-          window.location.href="index.html";
+          sessionStorage.setItem("roleiId",data.ROLE)
           sessionStorage.setItem("isLoggedin","true");
+          window.location.href="index.html";
         } else if (data.STATUS === true && data.ROLE == 1){
+          sessionStorage.setItem("roleiId",data.ROLE)
           sessionStorage.setItem("userid",data.USER_ID);
-          console.log('User ID:', data.USER_ID); // s
           sessionStorage.setItem("isLoggedin","true");
           window.location.href="../index.html";
-          console.log('Validation is false');
         }else {
             alert("the email or password not valid")
         }

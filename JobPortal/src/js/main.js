@@ -81,4 +81,45 @@
 
 
 
-// 
+// js --------------------------------------------------
+let signupButtonNav = document.getElementById('signupBtn');
+let loginButtonNav = document.getElementById('loginbtn');
+
+// Check if the user is logged in
+const roleId = sessionStorage.getItem('roleiId'); // Use 'roleiId' instead of 'roleId'
+const isLoggedIn = sessionStorage.getItem('isLoggedin');
+
+if (isLoggedIn === 'true' && roleId === '1') {
+  signupButtonNav.textContent = 'Dashboard';
+  signupButtonNav.addEventListener('click', (e) => {
+    window.location.href = 'admindashboard';
+  });
+  loginButtonNav.addEventListener('click', (e) => {
+    // Log out logic
+    console.log('Logout button clicked');
+    window.location.href = '/JobPortal/src/index.html';
+    sessionStorage.clear();
+  });
+  
+} else if (isLoggedIn === 'true' && roleId === '2') {
+  // Change text and behavior for logged-in users
+  signupButtonNav.textContent = 'Dashboard';
+  loginButtonNav.textContent = 'Log out';
+
+  signupButtonNav.addEventListener('click', () => {
+    window.location.href = '/JobPortal/src/userDashBoard/index.html';
+  });
+  loginButtonNav.addEventListener('click', (e) => {
+    // Log out logic
+    window.location.href = '/JobPortal/src/index.html';
+    sessionStorage.clear();
+  });
+} else {
+  signupButtonNav.addEventListener('click', (e) => {
+    window.location.href = 'loginandsighnup.html';
+  });
+
+  loginButtonNav.addEventListener('click', (e) => {
+    window.location.href = 'loginandsighnup.html';
+  });
+}
