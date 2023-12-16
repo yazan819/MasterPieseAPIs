@@ -22,25 +22,29 @@ header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-class Database {
+class Database
+{
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
     private $dbname = "abodmaster";
     private $conn;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connect();
     }
 
-    private function connect() {
+    private function connect()
+    {
         $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
     }
 
-    public function insertUser($username, $email, $password) {
+    public function insertUser($username, $email, $password)
+    {
         $insert_query = "INSERT INTO users (Username, Email, passwordHash) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($insert_query);
         $stmt->execute([$username, $email, $password]);
@@ -51,7 +55,8 @@ class Database {
         }
     }
 
-    public function userExists($email) {
+    public function userExists($email)
+    {
         $query = "SELECT COUNT(*) as count FROM users WHERE Email = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param('s', $email);
@@ -61,19 +66,23 @@ class Database {
         return $row['count'] > 0;
     }
 
-    public function close() {
+    public function close()
+    {
         $this->conn->close();
     }
 }
 
-class UserRegistration {
+class UserRegistration
+{
     private $db;
 
-    public function __construct(Database $db) {
+    public function __construct(Database $db)
+    {
         $this->db = $db;
     }
 
-    public function register() {
+    public function register()
+    {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data = json_decode(file_get_contents('php://input'), true);
 
@@ -113,5 +122,3 @@ $db = new Database();
 $userRegistration = new UserRegistration($db);
 $userRegistration->register();
 $db->close();
-
-
